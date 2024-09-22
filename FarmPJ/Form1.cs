@@ -35,7 +35,6 @@ namespace FarmPJ
             txt_ChildCount.Text = selectedAnimal.ChildCount.ToString();
             txt_Count.Text = selectedAnimal.Count.ToString();
 
-            btn_Save.Text = "Update";
             btn_Delete.Enabled = true;
         }
 
@@ -199,27 +198,66 @@ namespace FarmPJ
 
         private void btn_Eval_Click(object sender, EventArgs e)
         {
+            string caption = "Trạng thái sau lứa mới sinh";
+            string body = "";
+            double totalMilk = 0;
             Random random = new Random();
-            var animalService = new AnimalService(); // Assume you have an instance of AnimalService
-
             foreach (DataGridViewRow row in animalGridView.Rows)
             {
                 if (row.DataBoundItem is AnimalDTO animal)
                 {
-                    // Increase Count by a random value between 1 and 5
-                    animal.Count += random.Next(1, 6);
-
-                    // Increase Milk by a random value between 0.1 and 1.0
-                    double randomMilk = Math.Round(random.NextDouble() * (1.0 - 0.1) + 0.1, 1);
-                    animal.Milk = Math.Round(animal.Milk + randomMilk, 1);
-
-                    // Save the updated animal data
-                    animalService.SaveAnimal(animal);
-
-                    // Optionally, refresh the row to display updated values
-                    animalGridView.Refresh();
+                    int childs = random.Next(0, 10);
+                    double milk = 0;
+                    int previousAnimalCount = animal.Count;
+                    animal.Count += childs;
+                    switch (animal.AnimalTypeName)
+                    {
+                        case "Cow":
+                            milk = Math.Round(
+                                random.NextDouble() * 20
+                                , 1) * previousAnimalCount;
+                            body += $"Số bò sau sinh: {animal.Count}\r\n";
+                            break;
+                        case "Sheep":
+                            milk = Math.Round(
+                                random.NextDouble() * 5
+                                , 1) * previousAnimalCount;
+                            body += $"Số cừu sau sinh: {animal.Count}\r\n";
+                            break;
+                        case "Goat":
+                            milk = Math.Round(
+                                random.NextDouble() * 10
+                                , 1) * previousAnimalCount;
+                            body += $"Số dê sau sinh: {animal.Count}\r\n";
+                            break;
+                        default:
+                            break;
+                    }
+                    totalMilk += milk;
+                    _animalService.SaveAnimal(animal);
                 }
             }
+            body += $"Tổng số sữa thu được: {totalMilk}(l)";
+
+            MessageBox.Show(body, caption);
+
+            animalGridView.Refresh();
+        }
+
+        private void btn_Sound_Click(object sender, EventArgs e)
+        {
+            string sounds = "";
+            foreach (DataGridViewRow row in animalGridView.Rows)
+            {
+                if (row.DataBoundItem is AnimalDTO animal)
+                {
+                    string sound = animal.Sound;
+                    int count = animal.Count;
+
+                    sounds = sounds + string.Join(" ", Enumerable.Repeat(sound, count)) + "\r\n";
+                }
+            }
+            MessageBox.Show(sounds, "Tiếng kêu");
         }
     }
 }

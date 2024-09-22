@@ -46,6 +46,7 @@
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Eval = new System.Windows.Forms.Button();
+            this.btn_Sound = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.animalGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,7 +178,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(50, 140);
+            this.btn_Save.Location = new System.Drawing.Point(158, 140);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(103, 44);
             this.btn_Save.TabIndex = 6;
@@ -187,7 +188,7 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.Location = new System.Drawing.Point(190, 140);
+            this.btn_Delete.Location = new System.Drawing.Point(274, 140);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(103, 44);
             this.btn_Delete.TabIndex = 6;
@@ -197,11 +198,11 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(338, 140);
+            this.btn_Cancel.Location = new System.Drawing.Point(49, 140);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(103, 44);
             this.btn_Cancel.TabIndex = 6;
-            this.btn_Cancel.Text = "Hủy";
+            this.btn_Cancel.Text = "Chọn";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
@@ -215,12 +216,23 @@
             this.btn_Eval.UseVisualStyleBackColor = true;
             this.btn_Eval.Click += new System.EventHandler(this.btn_Eval_Click);
             // 
+            // btn_Sound
+            // 
+            this.btn_Sound.Location = new System.Drawing.Point(383, 140);
+            this.btn_Sound.Name = "btn_Sound";
+            this.btn_Sound.Size = new System.Drawing.Size(103, 44);
+            this.btn_Sound.TabIndex = 6;
+            this.btn_Sound.Text = "Kêu";
+            this.btn_Sound.UseVisualStyleBackColor = true;
+            this.btn_Sound.Click += new System.EventHandler(this.btn_Sound_Click);
+            // 
             // animalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 450);
             this.Controls.Add(this.btn_Eval);
+            this.Controls.Add(this.btn_Sound);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Save);
@@ -262,6 +274,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgMilk;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgChildCount;
+        private System.Windows.Forms.Button btn_Sound;
     }
 }
 

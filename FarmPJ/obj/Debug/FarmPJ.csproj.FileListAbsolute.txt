@@ -11,3 +11,16 @@ C:\Users\tuanb\Downloads\.NET Core\FarmPJ\obj\Debug\FarmPJ.csproj.CoreCompileInp
 C:\Users\tuanb\Downloads\.NET Core\FarmPJ\obj\Debug\FarmPJ.csproj.CopyComplete
 C:\Users\tuanb\Downloads\.NET Core\FarmPJ\obj\Debug\FarmPJ.exe
 C:\Users\tuanb\Downloads\.NET Core\FarmPJ\obj\Debug\FarmPJ.pdb
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\bin\Debug\FarmPJ.exe.config
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\bin\Debug\FarmPJ.exe
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\bin\Debug\FarmPJ.pdb
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\bin\Debug\EntityFramework.dll
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\bin\Debug\EntityFramework.xml
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.csproj.AssemblyReference.cache
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.animalForm.resources
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.Properties.Resources.resources
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.csproj.GenerateResource.cache
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.csproj.CoreCompileInputs.cache
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.csproj.CopyComplete
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.exe
+C:\Users\tuanb\Downloads\.NET Core\.NET Exercise SE\.NET-Exercise\FarmPJ\obj\Debug\FarmPJ.pdb
