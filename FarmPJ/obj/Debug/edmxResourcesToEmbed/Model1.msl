@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DOTNETModelStoreContainer" CdmEntityContainer="DOTNETEntities">
+    <EntitySetMapping Name="Animals">
+      <EntityTypeMapping TypeName="DOTNETModel.Animal">
+        <MappingFragment StoreEntitySet="Animal">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+          <ScalarProperty Name="AnimalTypeId" ColumnName="AnimalTypeId" />
+          <ScalarProperty Name="Milk" ColumnName="Milk" />
+          <ScalarProperty Name="ChildCount" ColumnName="ChildCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnimalTypes">
+      <EntityTypeMapping TypeName="DOTNETModel.AnimalType">
+        <MappingFragment StoreEntitySet="AnimalType">
+          <ScalarProperty Name="AnimalTypeId" ColumnName="AnimalTypeId" />
+          <ScalarProperty Name="AnimalTypeName" ColumnName="AnimalTypeName" />
+          <ScalarProperty Name="Sound" ColumnName="Sound" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

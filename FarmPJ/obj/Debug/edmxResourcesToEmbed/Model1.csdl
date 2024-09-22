@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DOTNETModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Animal">
+    <Key>
+      <PropertyRef Name="AnimalId" />
+    </Key>
+    <Property Name="AnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnimalTypeId" Type="Int32" />
+    <Property Name="Milk" Type="Double" Nullable="false" />
+    <Property Name="ChildCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AnimalType" Relationship="Self.FK__Animal__AnimalTy__3E52440B" FromRole="Animal" ToRole="AnimalType" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnimalType">
+    <Key>
+      <PropertyRef Name="AnimalTypeId" />
+    </Key>
+    <Property Name="AnimalTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnimalTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sound" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Animals" Relationship="Self.FK__Animal__AnimalTy__3E52440B" FromRole="AnimalType" ToRole="Animal" />
+  </EntityType>
+  <Association Name="FK__Animal__AnimalTy__3E52440B">
+    <End Role="AnimalType" Type="Self.AnimalType" Multiplicity="0..1" />
+    <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnimalType">
+        <PropertyRef Name="AnimalTypeId" />
+      </Principal>
+      <Dependent Role="Animal">
+        <PropertyRef Name="AnimalTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DOTNETEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Animals" EntityType="Self.Animal" />
+    <EntitySet Name="AnimalTypes" EntityType="Self.AnimalType" />
+    <AssociationSet Name="FK__Animal__AnimalTy__3E52440B" Association="Self.FK__Animal__AnimalTy__3E52440B">
+      <End Role="AnimalType" EntitySet="AnimalTypes" />
+      <End Role="Animal" EntitySet="Animals" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

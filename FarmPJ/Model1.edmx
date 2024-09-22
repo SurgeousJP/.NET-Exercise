@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DOTNETModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnimalTypeId" Type="int" />
+          <Property Name="Milk" Type="float" Nullable="false" />
+          <Property Name="ChildCount" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnimalType">
+          <Key>
+            <PropertyRef Name="AnimalTypeId" />
+          </Key>
+          <Property Name="AnimalTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnimalTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sound" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Animal__AnimalTy__3E52440B">
+          <End Role="AnimalType" Type="Self.AnimalType" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalType">
+              <PropertyRef Name="AnimalTypeId" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="AnimalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DOTNETModelStoreContainer">
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimalType" EntityType="Self.AnimalType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Animal__AnimalTy__3E52440B" Association="Self.FK__Animal__AnimalTy__3E52440B">
+            <End Role="AnimalType" EntitySet="AnimalType" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DOTNETModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="AnimalId" />
+          </Key>
+          <Property Name="AnimalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnimalTypeId" Type="Int32" />
+          <Property Name="Milk" Type="Double" Nullable="false" />
+          <Property Name="ChildCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AnimalType" Relationship="Self.FK__Animal__AnimalTy__3E52440B" FromRole="Animal" ToRole="AnimalType" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnimalType">
+          <Key>
+            <PropertyRef Name="AnimalTypeId" />
+          </Key>
+          <Property Name="AnimalTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnimalTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sound" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Animals" Relationship="Self.FK__Animal__AnimalTy__3E52440B" FromRole="AnimalType" ToRole="Animal" />
+        </EntityType>
+        <Association Name="FK__Animal__AnimalTy__3E52440B">
+          <End Role="AnimalType" Type="Self.AnimalType" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AnimalType">
+              <PropertyRef Name="AnimalTypeId" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="AnimalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DOTNETEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animals" EntityType="Self.Animal" />
+          <EntitySet Name="AnimalTypes" EntityType="Self.AnimalType" />
+          <AssociationSet Name="FK__Animal__AnimalTy__3E52440B" Association="Self.FK__Animal__AnimalTy__3E52440B">
+            <End Role="AnimalType" EntitySet="AnimalTypes" />
+            <End Role="Animal" EntitySet="Animals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DOTNETModelStoreContainer" CdmEntityContainer="DOTNETEntities">
+          <EntitySetMapping Name="Animals">
+            <EntityTypeMapping TypeName="DOTNETModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
+                <ScalarProperty Name="AnimalTypeId" ColumnName="AnimalTypeId" />
+                <ScalarProperty Name="Milk" ColumnName="Milk" />
+                <ScalarProperty Name="ChildCount" ColumnName="ChildCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimalTypes">
+            <EntityTypeMapping TypeName="DOTNETModel.AnimalType">
+              <MappingFragment StoreEntitySet="AnimalType">
+                <ScalarProperty Name="AnimalTypeId" ColumnName="AnimalTypeId" />
+                <ScalarProperty Name="AnimalTypeName" ColumnName="AnimalTypeName" />
+                <ScalarProperty Name="Sound" ColumnName="Sound" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
