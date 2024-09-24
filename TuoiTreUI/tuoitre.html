@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="script.js" defer></script>
+	<title>News Page</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: Arial, sans-serif;
+		}
+
+		body {
+			background-color: white;
+			font-family: Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-weight: normal;
+			font-style: normal;
+			font-variant: normal;
+			font-display: swap;
+			unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+		}
+
+		header {
+			display: flex;
+			vertical-align: middle;
+			align-self: center;
+			background-color: white;
+			padding: 10px 20px;
+			color: black;
+			text-align: center;
+		}
+
+		.navbar {
+			display: flex;
+			align-items: center;
+			vertical-align: middle;
+
+			padding: 8px 100px 8px;
+			flex-basis: 1;
+			background-color: #2fa1b3;
+			justify-content: space-between;
+		}
+
+		.left-navbar {
+			display: flex;
+			align-items: center;
+			vertical-align: middle;
+			gap: 8px;
+			background-color: #2fa1b3;
+		}
+
+		.navbar a {
+			color: white;
+			text-decoration: none;
+			padding: 10px;
+			font-weight: bold;
+		}
+
+		.container {
+			display: flex;
+			margin-top: 16px;
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+
+		.main-content {
+			flex: 3;
+			margin-right: 20px;
+		}
+
+		.sidebar {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+
+		/* Large Featured News */
+		.featured-news {
+			background-color: white;
+			margin-bottom: 20px;
+			padding: 15px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.featured-news img {
+			width: 100%;
+			border-radius: 8px;
+		}
+
+		.featured-news h2 {
+			margin: 10px 0;
+			font-size: 1.5rem;
+			color: #333;
+		}
+
+		/* Smaller news items */
+		.news-item-small {
+			display: flex;
+			background-color: white;
+			margin-bottom: 20px;
+			padding: 10px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.news-item-small img {
+			width: 150px;
+			height: 100px;
+			border-radius: 8px;
+			margin-right: 10px;
+		}
+
+		.news-item-small h3 {
+			font-size: 1.1rem;
+			color: #333;
+		}
+
+		.news-item-small p {
+			font-size: 0.9rem;
+			color: #666;
+		}
+
+		/* Sidebar news list */
+		.list-news {
+			background-color: white;
+			margin-bottom: 20px;
+			padding: 10px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar .list-news-item {
+			display: flex;
+			margin-bottom: 10px;
+		}
+
+		.sidebar .list-news-item img {
+			width: 80px;
+			height: 60px;
+			object-fit: cover;
+			border-radius: 8px;
+			margin-right: 10px;
+		}
+
+		.sidebar .list-news-item p {
+			font-size: 0.9rem;
+			color: #333;
+		}
+
+		/* Dropdown within the news list */
+		.dropdown-news-list {
+			background-color: white;
+			padding: 10px;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			margin-top: 20px;
+		}
+
+		.dropdown-news-list select {
+			width: 100%;
+			padding: 10px;
+			border-radius: 8px;
+			border: 1px solid #ccc;
+			background-color: white;
+			font-size: 1rem;
+			color: #333;
+		}
+
+		.searchbar-container {
+			flex-basis: 500px;
+			display: flex;
+			height: auto;
+			align-items: center;
+			vertical-align: middle;
+			justify-content: space-between;
+			padding-left: 16px;
+			padding-right: 16px;
+			padding-top: 0px;
+			padding-bottom: 0px;
+			border: 0.25px solid #ccc;
+			border-radius: 12px;
+		}
+
+		.searchbar {
+			border: none;
+		}
+
+		.searchbar:focus {
+			border-color: transparent;
+			box-shadow: none;
+			outline: none;
+		}
+
+		.header {
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: 100px;
+			margin-right: 100px;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.left-header {
+			display: flex;
+			flex-basis: 700px;
+			gap: 60px;
+		}
+
+		.right-header {
+			text-align: center;
+			align-items: center;
+			vertical-align: middle;
+			display: flex;
+			gap: 20px;
+			justify-content: space-evenly;
+		}
+
+		.hashtag {
+			font-size: 12px;
+			border: solid;
+			padding: 1px 6px 1px;
+			border-width: 1px;
+			border-radius: 16px;
+			border-color: white;
+			color: white;
+			background-color: #2fa1b3;
+			display: flex;
+			align-items: center;
+			vertical-align: middle;
+			max-height: 20px;
+		}
+
+		.news-image{
+			max-width: 100%; /* Scale the image to fit its container */
+    	height: auto;    /* Maintain aspect ratio */
+		}
+
+		.vertical-item{
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<div class="left-header">
+			<img src="images/bm-logo.png" width="125" height="55">
+			<div class="searchbar-container">
+				<input class="searchbar" placeholder="Nhập nội dung tìm kiếm">
+				<img src="images/search.png" width="24" height="24">
+			</div>
+		</div>
+		<div class="right-header">
+			<img src="images/user.png" width="24" height="24">
+			<img src="images/menu.png" width="24" height="24">
+		</div>
+	</header>
+	<div class="navbar">
+		<div class="left-navbar">
+			<a href="#">NÓNG</a>
+			<a href="#">MỚI</a>
+			<a href="#">VIDEO</a>
+			<a href="#">CHỦ ĐỀ</a>
+			<span class="hashtag">
+				#Năng lượng tích cực
+			</span>
+			<span class="hashtag">
+				#Khám phá bản thân
+			</span>
+			<span class="hashtag">
+				#Khám phá thế giới
+			</span>
+		</div>
+		<div style="background-color: #2b94a5; padding: 4px 8px 4px;"></div>
+		<img src="images/hamburger.png" style="filter: brightness(0) invert(1);" width="24" height="24">
+	</div>
+	</div>
+
+	<div class="container">
+		<!-- Main Content Area -->
+		<div id="main-content" class="main-content">
+			<!-- Featured News with large image -->
+			<div class="featured-news">
+				<img src="images/m2.png" class="news-image">
+				<h2>Headline News: Major Breakthrough in Renewable Energy Technology</h2>
+				<p>Scientists have unveiled a revolutionary solar panel that promises to double energy efficiency and
+					significantly reduce production costs, marking a major step forward in the transition to renewable energy
+					sources and helping to combat climate change effectively.</p>
+				<div style="width: 150px ;height: 35px; display: flex; gap: 4px; align-items: center; vertical-align: middle;">
+					<img src="images/tuoitrelogo.png" width="50px" height="24px"/>
+					<span style="width: 100px; font-size: 10px; color: gray">41 phút</span>
+				</div>
+			</div>
+			<div id="horizontal-lst" style="display: flex; gap: 20px"></div>
+		</div>
+
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<!-- List of news items -->
+			<div class="list-news">
+				<h3>Related News</h3>
+				<div id="main-content-3"></div>
+			</div>
+
+			<img src="images/peakpx.jpg" style="max-width: 100%;"/>
+
+			<!-- Dropdown Section within News List -->
+			<div class="dropdown-news-list">
+				<h3 style="margin-bottom: 16px;">Choose Category</h3>
+				<select style="margin-bottom: 16px;">
+					<option value="1">World News</option>
+					<option value="2">Sports</option>
+					<option value="3">Technology</option>
+					<option value="4">Entertainment</option>
+				</select>
+				<div id="main-content-2"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
