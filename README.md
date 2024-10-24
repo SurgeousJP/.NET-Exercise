@@ -6,6 +6,10 @@
 # Product Management
 ![Alt Text](Product.png)
 
+# Product Management MVC
+![Alt Text](ProductMVC.png)
+![Alt Text](CatalogMVC.png)
+
 # Set up and run
 1. Clone the repository
 
